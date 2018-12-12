@@ -4,7 +4,7 @@ node {
       string(
         name: 'git_branch_tag_or_commit',
         defaultValue: 'develop',
-        description: 'Any branch from https://github.com/HSarode-Compumatrice/spring-mvc-showcase.git'
+        description: 'Any branch from https://github.com/harshblog150/spring-mvc-showcase.git'
         ),
       string(
         name: 'deploy_target',
@@ -29,7 +29,7 @@ node {
       --application-name springapp \
       --s3-location s3://springbucket.s3-us-west-2.amazonaws.com/springapp-${BUILD_NUMBER}.zip \
       --source ${PWD} \
-	  --region us-west-2
+      --region us-west-2
     '''
   }
 
