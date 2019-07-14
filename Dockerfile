@@ -3,14 +3,16 @@ FROM maven:alpine
 #
 # image layer
 #
-WORKDIR /spring-mvc-showcase
-ADD pom.xml /spring-mvc-showcase
 RUN mvn -version
+WORKDIR /spring-mvc-showcase
+COPY . /spring-mvc-showcase
+ADD pom.xml /spring-mvc-showcase
 #
 # Image layer: with the application
 #
-COPY . /spring-mvc-showcase
+RUN ls -lthr && pwd
 RUN mvn clean package
-ADD ./target/*.war /spring-mvc-showcase/
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/spring-mvc-showcase/spring-mvc-showcase.war"]
+RUN ls -lthr
+#ADD /spring-mvc-showcase/**/target/*.war /usr/lib/tomcat/webapps/
+#EXPOSE 8080
+#ENTRYPOINT ["java","-jar","/spring-mvc-showcase/spring-mvc-showcase.war"]
